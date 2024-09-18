@@ -1,7 +1,11 @@
+import java.util.Scanner;
+
 public class Calculator {
 
-    public static int getMenuOption(){
+    public static int getMenuOption()
+    {
         return 0;
+
     }
 
     public static double getOperand(String prompt){
@@ -9,7 +13,7 @@ public class Calculator {
     }
 
     public static double[] getPair(){
-        return 0;
+        return null;
     }
 
     public static double add(double[] values){
@@ -37,6 +41,18 @@ public class Calculator {
     }
 
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("1 Optellen");
+        System.out.println("2 Aftrekken");
+        System.out.println("3 Vermenigvuldigen");
+        System.out.println("4 Delen");
+        System.out.println("5 Genereer een random getal");
+        System.out.println("7 Bereken afstand");
+        System.out.println("Wat zou je willen doen?");
+        String keuze = in.nextLine();
+        //System.out.println(keuze);
+
+
 
     }
 }
