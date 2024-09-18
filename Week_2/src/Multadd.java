@@ -1,12 +1,13 @@
 
 public class Multadd {
 
-    public static double multadd(double a, double b, double c){
+    public static double multadd(double a, double b, double c) {
         return a * b + c;
     }
 
-    public static double expSum (double x){
-        return 0;
+    public static double expSum (double x) {
+        return multadd((x * Math.exp(-x)), 1.0, (Math.sqrt(1-(Math.exp(-x)))));
+
     }
 
     public static void main(String[] args){
@@ -19,5 +20,8 @@ public class Multadd {
         //log(10) x 1 + log(20)
         double result3 = multadd(Math.log(10), 1, Math.log(20));
         System.out.println("Resultaat van log(10) + log(20): " + result3);
+        double result4 = expSum(2.0);
+        System.out.println(result4);
+
     }
 }
