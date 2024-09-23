@@ -7,7 +7,6 @@ public class Main {
         Participant deelnemer = new Participant("Jan","Visser","janvisser@hanze.nl");
         deelnemer.increaseParticipationCount();
         deelnemer.increaseParticipationCount();
-        deelnemer.setFirstname("Dennis");
         System.out.println(deelnemer.toString());
         System.out.println(deelnemer.getFullName());
 

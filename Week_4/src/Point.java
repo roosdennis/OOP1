@@ -1,4 +1,5 @@
 public class Point {
+
     //FIELDS
     private int x;
     private int y;
@@ -27,8 +28,7 @@ public class Point {
     public void setY(int y) {
         this.y = y;
     }
-    //De methoden moveX(int dx), moveY(int dy) en moveXY(int dx, int dy) wijzigen het coördinaat
-    //als gevolg van verplaatsing
+
     public void moveX(int dx){
        this.x += dx;
     }
@@ -45,5 +45,20 @@ public class Point {
     @Override
     public String toString() {
         return String.format("(%d, %d)", x, y);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        //Snelle check
+        if (this == obj){
+            return true;
+        }
+        // NULL check en datatype
+        if ((obj==null) || (!(obj instanceof Point))){
+            return false;
+        }
+        //Casten
+        Point that = (Point)obj;
+        return (this.x == that.x) && (this.y == that.y);
     }
 }
