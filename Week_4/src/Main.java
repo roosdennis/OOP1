@@ -11,5 +11,10 @@ public class Main {
         System.out.println(deelnemer.toString());
         System.out.println(deelnemer.getFullName());
 
+        Point p = new Point(4, 6);
+        System.out.println(p);
+        p.moveXY(3,-5);
+        System.out.println(p);
+
     }
 }
