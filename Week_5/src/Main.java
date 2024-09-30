@@ -2,14 +2,20 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        //Auteurs aanmaken
+        Author auteur1 = new Author("bla", "bla");
+        Author auteur2 = new Author(" Schijt", "bak");
+        // Auteurs in een array plaatsen
+        Author[] auteurs = {auteur1, auteur2};
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Book boek1 = new Book("blabla", auteurs, 2023, "2");
+
     }
 }
+
+
+
+//Artikel: "Bringing Java to the enterprise: Oracle on its Java server strategy", 1998, auteur D. Rosenberg
+//Artikel: "Context-sensitive trace inlining for ", 2013, Christian Häubl, Christian Wimmer en Hanspeter Mössenböck
+//Artikel: "ARJA: Automated Repair of Java Programs via Multi-Objective Genetic Programming", 2020, Yuan Yuan en Wolfgang Banzhaf
+//Boek: "Head First Design Patterns", "Eric Freeman & Elisabeth Robson", 2020, 2e editie
