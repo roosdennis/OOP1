@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.nio.Buffer;
 
 public class Client implements Runnable {
 
@@ -14,8 +13,9 @@ public class Client implements Runnable {
 
     @Override
     public void run() {
-        try{
-            Socket client = new Socket("127.0.0.1", 9999);
+        try {
+            // pass public ip-adress of local ip addres for internal network.
+            client = new Socket("127.0.0.1", 9999);
             out = new PrintWriter(client.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
@@ -24,25 +24,24 @@ public class Client implements Runnable {
             t.start();
 
             String inMessage;
-            while((inMessage = in.readLine()) != null){
+            while ((inMessage = in.readLine()) != null) {
                 System.out.println(inMessage);
             }
-        }catch(IOException e){
-            //TODO: Handle
+        } catch (IOException e) {
+            shutdown();
         }
-
     }
 
-    public void shutdown(){
+    public void shutdown() {
         done = true;
-        try{
+        try {
             in.close();
             out.close();
-            if (!client.isClosed()){
+            if (!client.isClosed()) {
                 client.close();
             }
-        } catch (IOException e){
-            //ignore
+        } catch (IOException e) {
+            // ignore
         }
     }
 
@@ -50,18 +49,19 @@ public class Client implements Runnable {
 
         @Override
         public void run() {
-            try{
+            try {
                 BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in));
                 while (!done) {
                     String message = inReader.readLine();
-                    if (message.equals("/quit")){
+                    if (message.equals("/quit")) {
+                        out.println(message);
                         inReader.close();
                         shutdown();
                     } else {
                         out.println(message);
                     }
                 }
-            } catch(IOException e){
+            } catch (IOException e){
                 shutdown();
             }
         }
@@ -69,6 +69,6 @@ public class Client implements Runnable {
 
     public static void main(String[] args) {
         Client client = new Client();
-                client.run();
+        client.run();
     }
 }
