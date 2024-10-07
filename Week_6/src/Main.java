@@ -1,26 +1,28 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
+
     public static void main(String[] args) {
-        ArrayList<Integer> integerList = new ArrayList<>(15);
-        Random r = new Random();
-        for (int i = 0; i < 15; i++) {int randomNumber = r.nextInt(100);
-            integerList.add(randomNumber);
-        }
-        System.out.println(integerList);
-
-        int maxValue = max(integerList);
-        System.out.println(maxValue);
-        }
-
-    public static int max(ArrayList<Integer> getallen) {
-        int max = getallen.get(0);
-        for (int i = 1; i < getallen.size(); i++) {
-            if (getallen.get(i) > max) {
-                max = getallen.get(i);
+        String txt = "top2000.txt";
+        String[] delen = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(txt))) {
+            String regel;
+            while ((regel = reader.readLine()) != null) {
+                regel = regel.trim();
+                if (!regel.isEmpty()) {
+                    delen = regel.split("\t", 5);
+                    int positie = Integer.parseInt(delen[0]);
+                    String artiest = delen[1];
+                    String titel = delen[2];
+                    int jaar = Integer.parseInt(delen[3]);
+                    Notering notering = new Notering(positie, jaar, artiest, titel);
+                    System.out.println(notering);
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Fout bij lezen top200.txt");
         }
-        return max;
     }
 }
